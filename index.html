@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mel&Bee Spices - Luxury Spice Collection</title>
+    ‎<img src="logo.jpg" alt="Logo" class="top-right-logo">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'),
+                        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><circle cx="20" cy="20" r="3" fill="%23FFD700"/><circle cx="50" cy="30" r="2" fill="%23FF6B35"/><circle cx="80" cy="40" r="4" fill="%23FFA500"/><circle cx="110" cy="20" r="2.5" fill="%238B4513"/><circle cx="30" cy="70" r="3.5" fill="%23DAA520"/><circle cx="60" cy="90" r="2" fill="%23CD853F"/><circle cx="90" cy="80" r="3" fill="%23B22222"/><circle cx="120" cy="100" r="2.5" fill="%23FF4500"/><circle cx="40" cy="120" r="4" fill="%23DEB887"/><circle cx="70" cy="130" r="2.5" fill="%23F4A460"/></svg>');
+            background-size: cover, auto, 120px;
+            background-blend-mode: multiply;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 25px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255,215,0,0.4);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            color: #FFD700;
+            text-shadow: 4px 4px 8px rgba(0,0,0,1);
+            letter-spacing: 2px;
+        }
+        .hero .emoji {
+            font-size: 6rem;
+            margin: 35px 0;
+            display: block;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700; }
+            to { text-shadow: 0 0 20px #FFD700, 0 0 30px #FFA500; }
+        }
+
+        .hero p {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #FFF8DC;
+            font-weight: 600;
+        }
+
+        /* Products Section */
+        .products-section {
+            margin: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 45px;
+            color: #FFD700;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .packaging-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 25px;
+        }
+
+        .filter-btn {
+            background: rgba(255,215,0,0.25);
+            color: white;
+            border: 3px solid #FFD700;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.4s;
+            font-weight: bold;        }
+
+        .filter-btn.active {
+            background: #FFD700;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.18);
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            border: 3px solid rgba(255,215,0,0.3);
+            transition: all 0.4s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .product-icon {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 3px solid rgba(255,215,0,0.4);
+        }
+
+        .product-card h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        .product-info {
+            color: #FFF8DC;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .product-card .price {
+            color: #00FA9A;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .buy-now {
+            background: linear-gradient(45deg, #FF6B35, #FFA500);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 35px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.4s;
+            border: 2px solid rgba(255,215,0,0.5);
+        }
+
+        .buy-now:hover {
+            background: linear-gradient(45deg, #FF4500, #FF8C00);
+            transform: scale(1.08);
+            box-shadow: 0 10px 25px rgba(255,107,53,0.4);
+        }
+
+        /* Why Choose Us Section */
+        .features-section {
+            background: rgba(0,0,0,0.75);
+            border-radius: 25px;
+            padding: 60px 40px;
+            margin: 50px 0;
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255,215,0,0.4);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .feature-card {
+            text-align: center;            padding: 40px 25px;
+            background: rgba(255,215,0,0.15);
+            border-radius: 20px;
+            border: 2px solid rgba(255,215,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .feature-card p {
+            color: #FFF8DC;
+            line-height: 1.6;
+        }
+
+        /* Order Summary Section */
+        .summary-section {
+            background: rgba(0,0,0,0.8);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 50px 0;
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255,215,0,0.4);
+        }
+
+        .order-items {
+            margin-bottom: 40px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .item-controls {
+            display: flex;            align-items: center;
+            gap: 15px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            background: #FF6B35;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .remove-item {
+            background: #B22222;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 15px;
+        }
+
+        .summary-total {
+            font-size: 2.5rem;
+            text-align: right;
+            margin: 40px 0;
+            color: #00FA9A;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Checkout Form */
+        .checkout-form {
+            background: rgba(255,255,255,0.15);
+            padding: 50px;
+            border-radius: 25px;
+            margin-top: 40px;
+            border: 3px solid rgba(255,215,0,0.4);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 12px;
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 18px;
+            border-radius: 20px;
+            border: 3px solid rgba(255,215,0,0.3);
+            background: rgba(0,0,0,0.4);
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .place-order {
+            background: linear-gradient(45deg, #00FA9A, #00CED1);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 35px;
+            cursor: pointer;
+            font-size: 1.4rem;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.4s;
+            border: 2px solid rgba(0,250,154,0.5);
+        }
+
+        .place-order:hover {            background: linear-gradient(45deg, #00CED1, #20B2AA);
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(0,250,154,0.4);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 70px 20px;
+            background: rgba(0,0,0,0.8);
+            border-radius: 25px;
+            margin: 50px 0;
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255,215,0,0.4);
+        }
+
+        .contact-details {
+            margin: 40px 0;
+        }
+
+        .contact-link {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 1.6rem;
+            margin: 0 30px;
+            display: inline-block;
+            transition: all 0.3s;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        .contact-link:hover {
+            background: rgba(255,215,0,0.2);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0,0,0,0.95);
+            border-radius: 25px;
+            margin-top: 50px;
+            border: 3px solid rgba(255,215,0,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }            
+            .hero p {
+                font-size: 1.6rem;
+            }
+            
+            .section-title {
+                font-size: 2.4rem;
+            }
+            
+            .packaging-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-link {
+                display: block;
+                margin: 15px 0;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Mel&Bee Spices</h1>
+            <span class="emoji">😋</span>
+            <p>Luxury Flavor for Royal Taste</p>
+            <p>Exquisite Spices for Discerning Palates</p>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section">
+            <h2 class="section-title">Premium Collections</h2>
+            
+            <div class="packaging-filters">
+                <button class="filter-btn active" onclick="showProducts('sachet')">Sachet Packs</button>
+                <button class="filter-btn" onclick="showProducts('can')">Plastic Cans</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Sachet Products -->
+                <div class="product-card" data-type="sachet">
+                    <div class="product-icon">🌶️</div>
+                    <h3>Jollof Spice</h3>
+                    <div class="product-info">Sachet Pack • 100g</div>                    <div class="price">₦4,500</div>
+                    <button class="buy-now" onclick="addToOrder('Jollof Spice (100g)', 4500)">Buy Now</button>
+                </div>
+                
+                <div class="product-card" data-type="sachet">
+                    <div class="product-icon">🧂</div>
+                    <h3>All-Purpose Seasoning</h3>
+                    <div class="product-info">Sachet Pack • 50g</div>
+                    <div class="price">₦3,200</div>
+                    <button class="buy-now" onclick="addToOrder('All-Purpose Seasoning (50g)', 3200)">Buy Now</button>
+                </div>
+                
+                <div class="product-card" data-type="sachet">
+                    <div class="product-icon">🍗</div>
+                    <h3>Chicken Seasoning</h3>
+                    <div class="product-info">Sachet Pack • 100g</div>
+                    <div class="price">₦3,800</div>
+                    <button class="buy-now" onclick="addToOrder('Chicken Seasoning (100g)', 3800)">Buy Now</button>
+                </div>
+
+                <!-- Can Products -->
+                <div class="product-card" data-type="can">
+                    <div class="product-icon">🥫</div>
+                    <h3>Suya Spice</h3>
+                    <div class="product-info">Plastic Can • 200g</div>
+                    <div class="price">₦6,800</div>
+                    <button class="buy-now" onclick="addToOrder('Suya Spice (200g)', 6800)">Buy Now</button>
+                </div>
+                
+                <div class="product-card" data-type="can">
+                    <div class="product-icon">🌿</div>
+                    <h3>Curry Mix</h3>
+                    <div class="product-info">Plastic Can • 500g</div>
+                    <div class="price">₦9,500</div>
+                    <button class="buy-now" onclick="addToOrder('Curry Mix (500g)', 9500)">Buy Now</button>
+                </div>
+                
+                <div class="product-card" data-type="can">
+                    <div class="product-icon">🔥</div>
+                    <h3>Hot Pepper Blend</h3>
+                    <div class="product-info">Plastic Can • 200g</div>
+                    <div class="price">₦7,200</div>
+                    <button class="buy-now" onclick="addToOrder('Hot Pepper Blend (200g)', 7200)">Buy Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="features-section">
+            <h2 class="section-title">Why Choose Mel&Bee?</h2>            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>👑 Royal Quality</h3>
+                    <p>Hand-selected premium spices from the finest sources</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔒 Premium Packaging</h3>
+                    <p>Vacuum-sealed, moisture-proof containers for maximum freshness</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⭐ Trusted Excellence</h3>
+                    <p>Favored by top hotels and gourmet restaurants nationwide</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🚚 Exclusive Delivery</h3>
+                    <p>Swift, secure delivery to your doorstep anywhere in Nigeria</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Summary Section -->
+        <section class="summary-section">
+            <h2 class="section-title">Your Order Summary</h2>
+            <div class="order-items" id="orderItems">
+                <p id="emptyOrderMessage" style="text-align: center; font-size: 1.4rem; color: #FFD700;">Your order is empty. Select some premium spices!</p>
+            </div>
+            <div class="summary-total">
+                Total: ₦<span id="totalCost">0</span>
+            </div>
+        </section>
+
+        <!-- Checkout Form -->
+        <section class="checkout-form">
+            <h2 class="section-title">Complete Your Purchase</h2>
+            <form id="purchaseForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number *</label>
+                        <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address *</label>
+                    <textarea id="deliveryAddress" rows="3" placeholder="Enter your complete delivery address" required></textarea>
+                </div>
+                <div class="form-group">                    <label for="specialRequests">Special Requests (Optional)</label>
+                    <textarea id="specialRequests" rows="2" placeholder="Any special delivery instructions?"></textarea>
+                </div>
+                <button type="submit" class="place-order">✨ Place Premium Order Now</button>
+            </form>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2>Contact Mel&Bee Spices</h2>
+            <div class="contact-details">
+                <a href="tel:+2348000000000" class="contact-link">📞 +234 800 000 0000</a>
+                <a href="mailto:info@melbee-spices.com" class="contact-link">✉️ info@melbee-spices.com</a>
+            </div>
+            <p>Excellence Delivered to Your Kitchen</p>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Mel&Bee Spices. All Rights Reserved.</p>
+            <p>Royal Flavors • Premium Quality • Trusted Excellence</p>
+        </footer>
+    </div>
+
+    <script>
+        // Order functionality
+        let order = [];
+        
+        function showProducts(type) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                if (type === 'all' || product.dataset.type === type) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+        
+        function addToOrder(name, price) {
+            const existingItem = order.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                order.push({ name, price, quantity: 1 });
+            }            updateOrder();
+        }
+        
+        function removeFromOrder(index) {
+            order.splice(index, 1);
+            updateOrder();
+        }
+        
+        function updateQuantity(index, change) {
+            order[index].quantity += change;
+            if (order[index].quantity <= 0) {
+                order.splice(index, 1);
+            }
+            updateOrder();
+        }
+        
+        function updateOrder() {
+            const orderItemsDiv = document.getElementById('orderItems');
+            const totalCostSpan = document.getElementById('totalCost');
+            
+            if (order.length === 0) {
+                orderItemsDiv.innerHTML = '<p id="emptyOrderMessage" style="text-align: center; font-size: 1.4rem; color: #FFD700;">Your order is empty. Select some premium spices!</p>';
+                totalCostSpan.textContent = '0';
+                return;
+            }
+            
+            let orderHtml = '';
+            let total = 0;
+            
+            order.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                orderHtml += `
+                    <div class="order-item">
+                        <div style="flex: 2;">
+                            <strong>${item.name}</strong>
+                            <br>₦${item.price.toLocaleString()} each
+                        </div>
+                        <div class="item-controls">
+                            <div class="quantity-control">
+                                <button class="qty-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                                <span style="font-size: 1.4rem; font-weight: bold; margin: 0 15px;">${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                            </div>
+                            <button class="remove-item" onclick="removeFromOrder(${index})">Remove</button>
+                        </div>
+                        <div style="font-weight: bold; color: #00FA9A; font-size: 1.4rem;">
+                            ₦${itemTotal.toLocaleString()}
+                        </div>                    </div>
+                `;
+            });
+            
+            orderItemsDiv.innerHTML = orderHtml;
+            totalCostSpan.textContent = total.toLocaleString();
+        }
+        
+        // Form submission
+        document.getElementById('purchaseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (order.length === 0) {
+                alert('Please select items to order before proceeding.');
+                return;
+            }
+            
+            const fullName = document.getElementById('fullName').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const deliveryAddress = document.getElementById('deliveryAddress').value;
+            
+            let orderSummary = '\nOrder Summary:\n';
+            order.forEach(item => {
+                orderSummary += `${item.name} x ${item.quantity}: ₦${(item.price * item.quantity).toLocaleString()}\n`;
+            });
+            orderSummary += `\nTotal: ₦${document.getElementById('totalCost').textContent}`;
+            
+            alert(`✨ Dear ${fullName},\n\nThank you for your premium order with Mel&Bee Spices!\n${orderSummary}\n\nWe'll contact you at ${phoneNumber} to confirm delivery to ${deliveryAddress}.\n\nYour luxury spice experience is on its way!`);
+            
+            // Reset form and order
+            this.reset();
+            order = [];
+            updateOrder();
+        });
+        
+        // Initialize order display
+        updateOrder();
+    </script>
+</body>
+</html>
